@@ -1,0 +1,59 @@
+{
+  "id": "body",
+  "title": "Body",
+  "el": "main",
+  "children": [
+    {
+      "id": "header",
+      "title": "Header",
+      "el": "header",
+      "children": [
+        {
+          "id": "header-container",
+          "title": "Container",
+          "el": "div",
+          "className": "flex items-center justify-between",
+          "children": [
+            {
+              "id": "header-item-logo",
+              "title": "Logo",
+              "el": "h1",
+              "className": "font-medium text-2xl",
+              "children": [
+                {
+                  "id": "header-item-logo-link",
+                  "title": "LOGO Link",
+                  "el": "a",
+                  "href": "/",
+                  "children": "LOGO"
+                }
+              ]
+            },
+            {
+              "id": "header-items",
+              "title": "Header Items",
+              "el": "div",
+              "className": "flex items-center gap-2",
+              "children": [
+                {
+                  "id": "header-items-1",
+                  "title": "Blog",
+                  "el": "a",
+                  "href": "/blog",
+                  "children": "Blog"
+                },
+                {
+                  "id": "header-items-2",
+                  "title": "About",
+                  "el": "a",
+                  "href": "/about",
+                  "children": "About"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
