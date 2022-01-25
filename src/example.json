@@ -1,59 +1,68 @@
-{
-  "id": "body",
-  "title": "Body",
-  "el": "main",
-  "children": [
-    {
-      "id": "header",
-      "title": "Header",
-      "el": "header",
-      "children": [
-        {
-          "id": "header-container",
-          "title": "Container",
-          "el": "div",
-          "className": "flex items-center justify-between",
-          "children": [
-            {
-              "id": "header-item-logo",
-              "title": "Logo",
-              "el": "h1",
-              "className": "font-medium text-2xl",
-              "children": [
-                {
-                  "id": "header-item-logo-link",
-                  "title": "LOGO Link",
-                  "el": "a",
-                  "href": "/",
-                  "children": "LOGO"
-                }
-              ]
-            },
-            {
-              "id": "header-items",
-              "title": "Header Items",
-              "el": "div",
-              "className": "flex items-center gap-2",
-              "children": [
-                {
-                  "id": "header-items-1",
-                  "title": "Blog",
-                  "el": "a",
-                  "href": "/blog",
-                  "children": "Blog"
-                },
-                {
-                  "id": "header-items-2",
-                  "title": "About",
-                  "el": "a",
-                  "href": "/about",
-                  "children": "About"
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
+[
+  {
+    "id": "body",
+    "title": "Body",
+    "el": "body"
+  },
+  {
+    "id": "header",
+    "title": "Header",
+    "parent": "body",
+    "el": "header",
+    "className": "flex items-center justify-center h-14 w-full"
+  },
+  {
+    "id": "section-1",
+    "title": "Section1",
+    "parent": "body",
+    "el": "section"
+  },
+  {
+    "id": "section-1-title",
+    "title": "Title",
+    "parent": "section-1",
+    "el": "h1",
+    "text": "Title"
+  },
+  {
+    "id": "header-container",
+    "title": "Container",
+    "className": "flex mx-5 items-center justify-between w-9/12",
+    "parent": "header",
+    "el": "div"
+  },
+  {
+    "id": "header-items-1",
+    "title": "Header Items 1",
+    "parent": "header-container",
+    "el": "div"
+  },
+  {
+    "id": "header-items-2",
+    "title": "Header Items 2",
+    "parent": "header-container",
+    "className": "flex items-center gap-2",
+    "el": "div"
+  },
+  {
+    "id": "header-item-logo",
+    "title": "Logo",
+    "parent": "header-items-1",
+    "el": "span",
+    "text": "Logo"
+  },
+  {
+    "id": "header-item-blog",
+    "title": "Blog",
+    "parent": "header-items-2",
+    "el": "span",
+    "text": "Blog"
+  },
+  {
+    "id": "header-item-about",
+    "title": "About",
+    "parent": "header-items-2",
+    "el": "span",
+    "text": "About"
+  }
+]
