@@ -1,9 +1,9 @@
-import { createElement, Fragment, useEffect, useState } from "react";
+import { createElement, Fragment, useEffect, useState, memo } from "react";
 import cn from "classnames";
 import { makeRecursiveData } from "./utils";
 import content from "./example.json";
 
-function RecursiveComponent({
+const RecursiveComponent = memo(function RecursiveCom({
   id,
   el,
   className = "",
@@ -70,7 +70,7 @@ function RecursiveComponent({
     onClick: (e) => onClick({ id }, e),
     onMouseOver: (e) => onMouseOver({ id }, e),
   });
-}
+});
 
 function App() {
   const [state, setState] = useState([]);
@@ -86,8 +86,8 @@ function App() {
 
   const addBlock = () => {
     const copyState = JSON.parse(JSON.stringify(state));
-    copyState.children.push({
-      id: "deneme1",
+    copyState[copyState?.length - 1].children.push({
+      id: `deneme-${copyState[copyState?.length - 1].children?.length}`,
       title: "Deneme",
       el: "div",
       className: "w-full bg-gray-100 h-10 border",
@@ -140,6 +140,7 @@ function App() {
           />
         </Fragment>
       ))}
+      <button onClick={addBlock}>Add Block</button>
     </div>
   );
 }
