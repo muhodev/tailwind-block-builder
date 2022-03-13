@@ -14,6 +14,7 @@
   {
     "id": "section-1",
     "title": "Section1",
+    "className": "text-6xl py-16 flex justify-center items-center flex-col",
     "parent": "body",
     "el": "section"
   },
@@ -21,8 +22,33 @@
     "id": "section-1-title",
     "title": "Title",
     "parent": "section-1",
+    "className": "text-center font-bold",
     "el": "h1",
-    "text": "Title"
+    "text": "Lorem impus dolar"
+  },
+  {
+    "id": "section-1-title-2",
+    "title": "Title",
+    "parent": "section-1",
+    "className": "text-center font-bold text-violet-600 pt-3",
+    "el": "h1",
+    "text": "Sit amet consectetur"
+  },
+  {
+    "id": "section-1-paragraph",
+    "title": "Paragraph",
+    "parent": "section-1",
+    "className": "text-center text-neutral-500 text-base mt-10 max-w-[500px]",
+    "el": "paragraph",
+    "text": "Lorem impus dolar sit amet consectetur adipisicing elit. Quisquam, quos. Lorem impus dolar sit amet consectetur adipisicing elit"
+  },
+  {
+    "id": "section-1-button",
+    "title": "Button",
+    "parent": "section-1",
+    "className": "text-center font-bold text-white text-base bg-violet-600 py-3 px-8 rounded-full mt-10",
+    "el": "button",
+    "text": "Purchase"
   },
   {
     "id": "header-container",
@@ -34,6 +60,7 @@
   {
     "id": "header-items-1",
     "title": "Header Items 1",
+    "className": "font-bold text-lg",
     "parent": "header-container",
     "el": "div"
   },
@@ -41,7 +68,14 @@
     "id": "header-items-2",
     "title": "Header Items 2",
     "parent": "header-container",
-    "className": "flex items-center gap-2",
+    "className": "flex items-center gap-4",
+    "el": "div"
+  },
+  {
+    "id": "header-items-3",
+    "title": "Header Items 3",
+    "parent": "header-container",
+    "className": "flex items-center gap-4",
     "el": "div"
   },
   {
@@ -49,7 +83,26 @@
     "title": "Logo",
     "parent": "header-items-1",
     "el": "span",
-    "text": "Logo"
+    "text": "Logo",
+    "group": "typography",
+    "type": "link"
+  },
+  {
+    "id": "header-item-home",
+    "title": "Blog",
+    "parent": "header-items-2",
+    "el": "a",
+    "href": "/blog",
+    "text": "Home",
+    "group": "typography",
+    "type": "link"
+  },
+  {
+    "id": "header-item-about",
+    "title": "Features",
+    "parent": "header-items-2",
+    "el": "span",
+    "text": "Features"
   },
   {
     "id": "header-item-blog",
@@ -59,10 +112,26 @@
     "text": "Blog"
   },
   {
-    "id": "header-item-about",
-    "title": "About",
+    "id": "header-item-contact",
+    "title": "Contact",
     "parent": "header-items-2",
     "el": "span",
-    "text": "About"
+    "text": "Contact"
+  },
+  {
+    "id": "header-item-signin",
+    "title": "Signin",
+    "parent": "header-items-3",
+    "className": "font-bold py-1 px-2 rounded text-sm",
+    "el": "button",
+    "text": "Signin"
+  },
+  {
+    "id": "header-item-signup",
+    "title": "Signin",
+    "parent": "header-items-3",
+    "className": "bg-violet-600 text-white font-bold py-1 px-2 rounded text-sm",
+    "el": "button",
+    "text": "Signup"
   }
 ]

@@ -1,6 +1,7 @@
 import { createElement, Fragment, useEffect, useState, memo } from "react";
 import cn from "classnames";
 import { makeRecursiveData } from "./utils";
+import { nanoid } from "nanoid";
 import content from "./example.json";
 
 const RecursiveComponent = memo(function RecursiveCom({
@@ -84,21 +85,72 @@ function App() {
     setState(makeRecursiveData(blocks, undefined));
   }, [blocks]);
 
-  const addBlock = () => {
-    const copyState = JSON.parse(JSON.stringify(state));
-    copyState[copyState?.length - 1].children.push({
-      id: `deneme-${copyState[copyState?.length - 1].children?.length}`,
-      title: "Deneme",
-      el: "div",
-      className: "w-full bg-gray-100 h-10 border",
-      children: null,
-    });
-    setState(copyState);
+  const addBlock = (e) => {
+    // TODO: refactor this spaghetti code after :D
+    e.stopPropagation();
+    const copyBlocks = JSON.parse(JSON.stringify(blocks));
+    const newId = nanoid();
+
+    if (!!selectedEl?.id) {
+      const findSelectedEl = copyBlocks.find((b) => b.id === selectedEl.id);
+      const selectedElIndex = copyBlocks.findIndex(
+        (b) => b.id === selectedEl.id
+      );
+      const filteredChildren = copyBlocks.filter(
+        (block) => block?.parent === selectedEl?.id
+      );
+      if (!!findSelectedEl.text) {
+        copyBlocks.splice(selectedElIndex + 1, 0, {
+          id: newId,
+          parent: findSelectedEl?.parent,
+          title: "Div block",
+          el: "div",
+          className: "w-full min-w-[40px] bg-gray-100 h-10 border",
+          children: null,
+        });
+      } else if (filteredChildren.length > 0) {
+        const lastChildrenId =
+          filteredChildren[filteredChildren.length - 1]?.id;
+        const lastChildrenIndex = copyBlocks.findIndex(
+          (b) => b?.id === lastChildrenId
+        );
+        copyBlocks.splice(lastChildrenIndex + 1, 0, {
+          id: newId,
+          parent: selectedEl?.id,
+          title: "Div block",
+          el: "div",
+          className: "w-full min-w-[40px] bg-gray-100 h-10 border",
+          children: null,
+        });
+      } else {
+        copyBlocks.splice(selectedElIndex + 1, 0, {
+          id: newId,
+          parent: selectedEl?.id,
+          title: "Div block",
+          el: "div",
+          className: "w-full min-w-[40px] bg-gray-100 h-10 border",
+          children: null,
+        });
+      }
+    } else {
+      copyBlocks.push({
+        id: newId,
+        parent: "body",
+        title: "Div block",
+        el: "div",
+        style: { minWidth: "30px" },
+        className: "w-full bg-gray-100 h-10 border",
+      });
+    }
+    setBlocks(copyBlocks);
+    setSelectedEl({ id: newId });
   };
   return (
     <div
       className="relative w-full min-h-screen"
-      onClick={() => setSelectedEl(null)}
+      onClick={(e) => {
+        setSelectedEl(null);
+      }}
       onMouseOver={() => setHoveredEl(null)}
       tabIndex={0}
       onKeyDown={(e) => {
@@ -127,6 +179,7 @@ function App() {
         <Fragment key={index}>
           <RecursiveComponent
             onClick={(payload, e) => {
+              e?.preventDefault();
               e.stopPropagation();
               setSelectedEl(payload);
             }}
